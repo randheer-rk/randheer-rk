@@ -12,9 +12,6 @@
   <a href="https://twitter.com/randheerrrk">
     <img src="https://img.shields.io/badge/Twitter-%40randheerrrk-1DA1F2?style=flat-square&logo=twitter&logoColor=white"/>
   </a>
-  <a href="mailto:randheer@ranskytech.com">
-    <img src="https://img.shields.io/badge/Email-randheer%40ranskytech.com-D14836?style=flat-square&logo=gmail&logoColor=white"/>
-  </a>
 </p>
 
 ---
