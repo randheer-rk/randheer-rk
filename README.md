@@ -54,19 +54,6 @@
 ### GitHub Stats
 
 <p align="center">
-  <img src="https://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=randheer-rk&theme=radical"/>
-</p>
-
-<p align="center">
-  <img height="165" src="https://github-profile-summary-cards.vercel.app/api/cards/stats?username=randheer-rk&theme=radical"/>
-  <img height="165" src="https://github-profile-summary-cards.vercel.app/api/cards/repos-per-language?username=randheer-rk&theme=radical"/>
-</p>
-
-<p align="center">
-  <img src="https://streak-stats.demolab.com?user=randheer-rk&theme=radical&hide_border=true"/>
-</p>
-
-<p align="center">
   <img src="https://github-readme-activity-graph.vercel.app/graph?username=randheer-rk&bg_color=141321&color=fe428e&line=9d4edd&point=f8d847&area=true&hide_border=true"/>
 </p>
 
