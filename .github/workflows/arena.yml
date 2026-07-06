@@ -1,0 +1,46 @@
+name: Pathfinder Arena
+
+on:
+  schedule:
+    - cron: "20 2 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Fetch contribution calendar
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh api graphql -f query='
+          query {
+            user(login: "randheer-rk") {
+              contributionsCollection {
+                contributionCalendar {
+                  totalContributions
+                  weeks { contributionDays { contributionCount date weekday } }
+                }
+              }
+            }
+          }' > gh_data.json
+
+      - name: Rebuild SVGs
+        run: |
+          python3 gen_arena.py
+          python3 gen_arena.py --invert
+
+      - name: Publish to output branch (overwritten nightly, keeps main clean)
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git checkout --orphan output
+          git reset
+          git add -f arena.svg arena_inverted.svg
+          git commit -m "arena: $(date -u +%F)"
+          git push -f origin output

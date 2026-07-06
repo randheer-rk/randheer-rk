@@ -57,8 +57,6 @@
   <img src="https://github-readme-activity-graph.vercel.app/graph?username=randheer-rk&bg_color=141321&color=fe428e&line=9d4edd&point=f8d847&area=true&hide_border=true"/>
 </p>
 
-<p align="center">
-  <img src="https://raw.githubusercontent.com/randheer-rk/randheer-rk/output/github-contribution-grid-snake-dark.svg" alt="GitHub contribution snake"/>
-</p>
+<img src="https://raw.githubusercontent.com/randheer-rk/randheer-rk/output/arena.svg" width="100%" alt="Pathfinder Arena — BFS, DFS, Dijkstra and A* race across my contribution graph, one algorithm at a time, ending on a scoreboard"/>
 
 <img width="100%" src="https://capsule-render.vercel.app/api?type=waving&color=0:fe428e,50:a855f7,100:f8d847&height=120&section=footer"/>
