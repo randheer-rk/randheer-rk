@@ -30,10 +30,31 @@ jobs:
             }
           }' > gh_data.json
 
+      - name: Fetch repositories
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh api graphql -f query='
+          query {
+            user(login: "randheer-rk") {
+              repositories(first: 100, ownerAffiliations: OWNER, isFork: false,
+                           orderBy: {field: PUSHED_AT, direction: DESC}) {
+                nodes {
+                  name isPrivate description
+                  primaryLanguage { name }
+                  languages(first: 10, orderBy: {field: SIZE, direction: DESC}) {
+                    edges { size node { name } }
+                  }
+                }
+              }
+            }
+          }' > repos.json
+
       - name: Rebuild SVGs
         run: |
           python3 gen_arena.py
           python3 gen_arena.py --invert
+          python3 gen_sheet.py
 
       - name: Publish to output branch (overwritten nightly, keeps main clean)
         run: |
@@ -41,6 +62,6 @@ jobs:
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git checkout --orphan output
           git reset
-          git add -f arena.svg arena_inverted.svg
-          git commit -m "arena: $(date -u +%F)"
+          git add -f arena.svg arena_inverted.svg sheet.svg
+          git commit -m "profile: $(date -u +%F)"
           git push -f origin output
