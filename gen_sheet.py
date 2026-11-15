@@ -11,7 +11,7 @@ from html import escape
 BASE = os.path.dirname(os.path.abspath(__file__))
 
 # ---- things to edit by hand --------------------------------------------------------
-NAME, CLASS = "RANDHEER RAMESH K", "CLASS: YOUR FRIENDLY NEIGHBOURHOOD CODER"
+NAME, TITLE = "Randheer Ramesh K", "YOUR FRIENDLY NEIGHBOURHOOD CODER"   # NAME is only used in the alt text
 RECIPE = ("Take 2 cups of Rust and a pinch of Zig. Fold into the network until the latency "
           "is too small to see. Add a handful of sandboxed agents and let them tell on the "
           "infrastructure, to keep it honest. Serve at 3 a.m.")
@@ -40,7 +40,8 @@ JOKE_STATS = [("COFFEE", 10, "#f4f4f4"), ("SLEEP", 1, "#b13e53")]
 NIGHT, SLOT, EDGE, WHITE, DIM = "#1a1c2c", "#333c57", "#566c86", "#f4f4f4", "#94b0c2"
 YELLOW, GREEN, CYAN, RED, BLUE = "#ffcd75", "#a7f070", "#73eff7", "#b13e53", "#3b5dc9"
 BAR_COLOURS = [CYAN, "#ef7d57", BLUE, YELLOW, "#38b764", "#41a6f6"]
-W, H, PAD, GAP = 1200, 960, 28, 22
+W, H, PAD, GAP = 1200, 936, 28, 22
+ID_H = 80
 
 # ---- data --------------------------------------------------------------------------
 repos = json.load(open(f"{BASE}/repos.json"))["data"]["user"]["repositories"]["nodes"]
@@ -117,12 +118,11 @@ para(LX + 22, y + 60, QUEST, 20, WHITE, 24, 26)
 # ---- identity ----------------------------------------------------------------------
 RX = LX + LW + GAP
 RW = W - PAD - RX
-panel(RX, PAD, RW, 104)
-text(RX + 22, PAD + 56, NAME, 34, YELLOW)
-text(RX + 22, PAD + 84, CLASS, 14, CYAN)
+panel(RX, PAD, RW, ID_H)
+text(RX + 22, PAD + 52, TITLE, 23, YELLOW)
 
 # ---- stats -------------------------------------------------------------------------
-MY, MH, SW = PAD + 104 + GAP, 306, 380
+MY, MH, SW = PAD + ID_H + GAP, 306, 380
 panel(RX, MY, SW, MH)
 text(RX + 22, MY + 36, "STATS", 13, GREEN)
 for i, (k, v, col) in enumerate(stats):
@@ -164,7 +164,7 @@ def font(path):
 css = (f"@font-face{{font-family:D;src:url(data:font/woff2;base64,{font('press-start-2p.woff2')}) format('woff2')}}"
        f"@font-face{{font-family:B;src:url(data:font/woff2;base64,{font('pixelify-sans.woff2')}) format('woff2')}}"
        ".d{font-family:D,monospace}.b{font-family:B,sans-serif}")
-alt = f"Character sheet for {NAME.title()}. {CLASS.title()}. Items: {', '.join(i[0] for i in items[:-1])}."
+alt = f"Character sheet for {NAME}, {TITLE.lower()}. Items: {', '.join(i[0] for i in items[:-1])}."
 svg = (f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {W} {H}" width="{W}" height="{H}" '
        f'role="img" aria-label="{escape(alt)}" shape-rendering="crispEdges"><style>{css}</style>\n' + "\n".join(out) + "\n</svg>\n")
 open(f"{BASE}/sheet.svg", "w").write(svg)
